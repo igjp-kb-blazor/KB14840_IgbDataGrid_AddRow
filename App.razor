@@ -1,0 +1,84 @@
+﻿<div style="max-width: 700px; margin: auto; padding: 24px; display: flex; flex-direction: column; gap: 24px;">
+    <div>
+        <IgbGrid Data="_people"
+                 @ref="grid"
+                 PrimaryKey="@nameof(Person.Id)"
+                 AutoGenerate="false">
+            <IgbColumn Field="@nameof(Person.Name)" Header="氏名"></IgbColumn>
+            <IgbColumn Field="@nameof(Person.JobTitle)" Header="職種"></IgbColumn>
+            <IgbColumn Field="@nameof(Person.Location)" Header="所在地"></IgbColumn>
+        </IgbGrid>
+    </div>
+    <div style="display: flex; justify-content: flex-start; gap: 16px; ">
+        <div class="input-container">
+            <IgbInput @bind-Value="_name" Label="氏名" />
+        </div>
+        <div class="input-container">
+            <IgbInput @bind-Value="_jobTitle" Label="職種" />
+        </div>
+        <div class="input-container">
+            <IgbInput @bind-Value="_location" Label="所在地" />
+        </div>
+    </div>
+    <div style="margin: 0 0 0 auto;">
+        <IgbButton @onclick="OnAddRow">
+            行追加
+        </IgbButton>
+    </div>
+    <p style="color:red">@message</p>
+</div>
+
+@code {
+    private string? message;
+    private string? _name;
+    private string? _jobTitle;
+    private string? _location;
+
+    private IgbGrid? grid;
+    // 行追加メソッド
+    private async Task OnAddRow()
+    {
+        if (grid is null) return;
+        message = null;
+        if (
+            !string.IsNullOrWhiteSpace(_name) &&
+            !string.IsNullOrWhiteSpace(_jobTitle) &&
+            !string.IsNullOrWhiteSpace(_location)
+            )
+        {
+            await grid.AddRowAsync
+            (
+                new Person
+                    {
+                        Id = _people.Count + 1,
+                        Name = _name,
+                        JobTitle = _jobTitle,
+                        Location = _location
+                    }
+            );
+            _name = null;
+            _jobTitle = null;
+            _location = null;
+        }
+        else
+        {
+            message = "※全ての項目を入力してください。";
+        }
+    }
+    public class Person
+    {
+        public int Id { get; set; }
+        public string? Name { get; set; }
+        public string? JobTitle { get; set; }
+        public string? Location { get; set; }
+    }
+
+    private List<Person> _people = new()
+    {
+        new() { Id = 1, Name = "Bob", JobTitle = "Developer", Location = "Tokyo" },
+        new() { Id = 2, Name = "Alice", JobTitle = "Support", Location = "Osaka" },
+        new() { Id = 3, Name = "John", JobTitle = "Manager", Location = "Nagoya" },
+        new() { Id = 4, Name = "Emily", JobTitle = "Marketing", Location = "Fukuoka" },
+        new() { Id = 5, Name = "David", JobTitle = "Sales", Location = "Sapporo" }
+    };
+}

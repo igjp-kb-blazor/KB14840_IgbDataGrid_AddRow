@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35431.28
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KB14840_IgbDataGrid_AddRow", "KB14840_IgbDataGrid_AddRow.csproj", "{DAD545F0-576B-4CE7-BEDF-F527FF45FB12}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAD545F0-576B-4CE7-BEDF-F527FF45FB12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAD545F0-576B-4CE7-BEDF-F527FF45FB12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAD545F0-576B-4CE7-BEDF-F527FF45FB12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAD545F0-576B-4CE7-BEDF-F527FF45FB12}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {69849294-EA41-483F-99B9-2423ECF794AE}
+	EndGlobalSection
+EndGlobal
